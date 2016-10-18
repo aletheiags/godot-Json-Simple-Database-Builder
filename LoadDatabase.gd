@@ -9,7 +9,6 @@ var fileLoc
 func setFileLocation(loc):
 	global.fileLoc = loc
 	global.dataBase = global.loadFile(loc)
-	print('m about to load this you')
 	emit_signal("databaseLoaded")
 	queue_free()
 	

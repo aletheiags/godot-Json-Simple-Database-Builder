@@ -2,6 +2,7 @@ extends Node
 
 var dataBase = {}
 var fileLoc
+var onTable
 
 func saveFile(location,data):
 	var file = File.new()

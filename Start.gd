@@ -2,7 +2,6 @@ extends Control
 
 signal databaseLoaded
 func databaseLoaded():
-	print(' I got here yo')
 	emit_signal("databaseLoaded")
 	queue_free()
 
