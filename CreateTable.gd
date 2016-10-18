@@ -8,6 +8,8 @@ var tableData = {
 var addFieldModal = load('res://Field.tscn')
 var aField = load("res://AField.tscn")
 
+signal tableSaved
+
 func reOrderFields():
 	var fields = get_node("Fields").get_children()
 	for i in range(tableData.fields.size()):
@@ -25,6 +27,7 @@ func addField(data):
 	aF.setField(data)
 	aF.set_pos(Vector2(0,(get_node("Fields").get_children().size()-1)*30))
 	aF.connect("fieldRemoved",self,"removeField")
+	print(tableData)
 
 func loadAddFieldModal():
 	var aFM = addFieldModal.instance()
@@ -33,3 +36,10 @@ func loadAddFieldModal():
 
 func _ready():
 	get_node("AddField").connect("pressed",self,"loadAddFieldModal")
+
+func _on_SaveTable_pressed():
+	tableData.tableName = get_node("TableName").get_text()
+	emit_signal("tableSaved", tableData.tableName)
+	global.dataBase.tables[tableData.tableName] = tableData
+	global.saveFile(global.fileLoc,global.dataBase)
+	queue_free()

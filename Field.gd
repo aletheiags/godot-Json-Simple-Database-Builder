@@ -15,7 +15,7 @@ func typeSelected(type= null):
 func TextSelected():
 	print('So you selected a '+fieldType+'. Now what do you want ot do')
 
-func DropDownFromField():
+func DropDownFromFieldSelected():
 	print("I need to make a dropdown from the Table/ Field")
 	
 func DropDownSelected():
